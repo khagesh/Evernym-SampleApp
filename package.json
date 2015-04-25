@@ -1,0 +1,28 @@
+{
+  "name": "pivotal-manager",
+  "version": "1.0.0",
+  "description": "Voice controlled Pivotal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khagesh/Evernym-SampleApp.git"
+  },
+  "keywords": [
+    "VoiceController"
+  ],
+  "author": "Khagesh Sharma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/khagesh/Evernym-SampleApp/issues"
+  },
+  "homepage": "https://github.com/khagesh/Evernym-SampleApp#readme",
+  "dependencies": {
+    "http-server": "^0.8.0"
+  },
+  "devDependencies": {
+    "typescript-tpm": "^0.1.7"
+  }
+}

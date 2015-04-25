@@ -1,3 +1,7 @@
 #Pivotal manager
+Welcome to voice controlled Pivotal
 
-Voice controlled Pivotal
+### Steps to run this application
+Install global packages `npm install -g bower gulp karma-cli typescript-tpm`
+
+run `npm install`, this will also trigger all frontend dependencies installation using bower
