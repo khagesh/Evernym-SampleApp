@@ -4,4 +4,4 @@
 ///<reference path="../types/tsd.d.ts" />
 (function () {
    angular.module('pivotal-tracker', ['oc.lazyLoad']);
-});
+})();

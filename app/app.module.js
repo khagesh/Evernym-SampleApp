@@ -4,5 +4,5 @@
 ///<reference path="../types/tsd.d.ts" />
 (function () {
     angular.module('pivotal-tracker', ['oc.lazyLoad']);
-});
+})();
 //# sourceMappingURL=app.module.js.map
