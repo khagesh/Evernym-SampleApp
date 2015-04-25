@@ -5,20 +5,18 @@
     <title>Voice controlled Pivotal</title>
     <!-- load bootstrap from CDN, no need to use our server for this -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <style>
-        .navbar { border-radius:0; }
-    </style>
+    <link rel="stylesheet" href="app/styles/styles.min.css" />
 </head>
-<body ng-app="pivotal-tracker">
+<body ng-app="app">
     <!-- NAVIGATION -->
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">Pivotal tracker</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a ui-sref="home">Home</a></li>
-            <li><a ui-sref="about-app">About app</a></li>
-            <li><a ui-sref="about-me">About me</a></li>
+            <li><a>Home</a></li>
+            <li><a>About app</a></li>
+            <li><a>About me</a></li>
         </ul>
     </nav>
 
@@ -26,12 +24,14 @@
     <div class="container">
         <h1>Welcome to voice controlled manager for Pivotal</h1>
 
-        <div ui-view></div>
+        <section ui-view></section>
     </div>
 
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
     <script src="app/app.module.js"></script>
+    <script src="app/app.config.js"></script>
+    <script src="app/home/home.controller.js"></script>
 </body>
 </html>

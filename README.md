@@ -5,3 +5,5 @@ Welcome to voice controlled Pivotal
 Install global packages `npm install -g bower gulp karma-cli tsd@next`
 
 run `npm install`, this will also trigger all frontend dependencies installation using bower
+
+run `tsd install angular -ros`

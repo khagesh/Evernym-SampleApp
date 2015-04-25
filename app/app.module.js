@@ -3,6 +3,7 @@
  */
 ///<reference path="../types/tsd.d.ts" />
 (function () {
-    angular.module('pivotal-tracker', ['oc.lazyLoad']);
+    'use strict';
+    angular.module('app', ['ui.router']);
 })();
 //# sourceMappingURL=app.module.js.map
