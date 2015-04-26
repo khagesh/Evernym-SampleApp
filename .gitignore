@@ -25,3 +25,5 @@ node_modules
 .idea
 bower_components
 types
+vendor
+app/app.all.js

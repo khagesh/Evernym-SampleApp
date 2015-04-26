@@ -3,10 +3,13 @@
  */
 ///<reference path="../../types/tsd.d.ts" />
 (function () {
-    angular.module('app').controller('HomeController', HomeController);
+    'use strict';
+    angular.module('app.home').controller('HomeController', HomeController);
     function HomeController() {
-        this.name = 'World!!';
-        return this;
+        var vm = this;
+        vm.name = 'Home';
+
+        return vm;
     }
     HomeController.$inject = [];
 })();

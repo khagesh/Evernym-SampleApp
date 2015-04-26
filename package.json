@@ -4,7 +4,10 @@
   "description": "Voice controlled Pivotal",
   "main": "index.js",
   "scripts": {
-    "postinstall": "bower install"
+    "preinstall": "npm install -g bower gulp karma-cli tsd@next",
+    "install": "npm install",
+    "postinstall": "bower install && tsd install angular -ros",
+    "start": "gulp & http-server -p 1991"
   },
   "repository": {
     "type": "git",
@@ -25,6 +28,7 @@
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.2.0",
+    "gulp-concat": "^2.5.2",
     "gulp-ext-replace": "^0.2.0",
     "gulp-less": "^3.0.3",
     "gulp-minify-css": "^1.1.0",

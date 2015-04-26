@@ -4,5 +4,6 @@
 ///<reference path="../types/tsd.d.ts" />
 (function () {
     'use strict';
-    angular.module('app', ['ui.router']);
+
+    angular.module('app', ['ui.router', 'oc.lazyLoad']);
 })();

@@ -4,6 +4,15 @@
 ///<reference path="../types/tsd.d.ts" />
 (function () {
     'use strict';
+    angular.module('app', ['ui.router', 'oc.lazyLoad']);
+})();
+//# sourceMappingURL=app.module.js.map
+/**
+ * Created by Khagesh.Sharma on 4/25/2015.
+ */
+///<reference path="../types/tsd.d.ts" />
+(function () {
+    'use strict';
     angular.module('app').config(AppConfiguration);
     function AppConfiguration($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
         $urlRouterProvider.otherwise('/');

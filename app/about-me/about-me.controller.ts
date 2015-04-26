@@ -6,14 +6,14 @@
     'use strict';
 
     angular
-        .module('app.home')
-        .controller('HomeController', HomeController);
+        .module('app.aboutMe')
+        .controller('AboutMeController', AboutMeController);
 
-    function HomeController() {
+    function AboutMeController(){
         var vm = this;
-        vm.name = 'Home';
+        vm.name = "About me";
 
         return vm;
     }
-    HomeController.$inject = [];
+    AboutMeController.$inject = [];
 })();

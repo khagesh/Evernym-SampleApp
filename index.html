@@ -11,12 +11,11 @@
     <!-- NAVIGATION -->
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">Pivotal tracker</a>
+            <a class="navbar-brand" ui-sref="home">Pivotal tracker</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a>Home</a></li>
-            <li><a>About app</a></li>
-            <li><a>About me</a></li>
+            <li><a ui-sref="home">Home</a></li>
+            <li><a ui-sref="about-me">About me</a></li>
         </ul>
     </nav>
 
@@ -27,11 +26,7 @@
         <section ui-view></section>
     </div>
 
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
-    <script src="app/app.module.js"></script>
-    <script src="app/app.config.js"></script>
-    <script src="app/home/home.controller.js"></script>
+    <script src="vendor/vendor.min.js"></script>
+    <script src="app/app.all.js"></script>
 </body>
 </html>
