@@ -9,6 +9,7 @@ var extReplace = require('gulp-ext-replace');
 var autoPrefixer = require('gulp-autoprefixer');
 var watch = require('gulp-watch');
 var concat = require('gulp-concat');
+
 var paths = {
     styles: 'app/styles/**/*.less',
     vendor: [
