@@ -5,5 +5,5 @@
 (function () {
     'use strict';
 
-    angular.module('app', ['ui.router', 'oc.lazyLoad']);
+    angular.module('app', ['ui.router', 'oc.lazyLoad', 'app.core']);
 })();

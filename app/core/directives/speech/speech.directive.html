@@ -1,0 +1,13 @@
+<section>
+    <div ng-show="speech.isSpeechAvailable">
+        <p>
+            <div>{{speech.finalSpeech}}<span>{{speech.interimSpeech}}</span></div>
+        </p>
+        <p>
+            <button type="button" class="btn btn-primary" ng-click="speech.onSpeechStart()">Take voice notes</button>
+            <button type="button" class="btn btn-danger" ng-click="speech.onSpeechStop()">Stop taking voice notes</button>
+        </p>
+    </div>
+    <p ng-hide="speech.isSpeechAvailable" class="has-warning">'Web Speech API is not supported by this browser. Upgrade to <a href="//www.google.com/chrome">Chrome</a> version 25 or later.'</p>
+    <p ng-show="speech.isError" class="has-error">{{speech.errorMessage}}</p>
+</section>

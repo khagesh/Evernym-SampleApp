@@ -5,7 +5,7 @@
 (function () {
     'use strict';
     angular.module('app').config(AppConfiguration);
-    function AppConfiguration($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
+    function AppConfiguration($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $httpProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider.state('home', {
             url: '/',
@@ -62,7 +62,10 @@
                 }
             ]
         });
+        // Enable CORS as well
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested_With'];
     }
-    AppConfiguration.$inject = ['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider'];
+    AppConfiguration.$inject = ['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$httpProvider'];
 })();
 //# sourceMappingURL=app.config.js.map

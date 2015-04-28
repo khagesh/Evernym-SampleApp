@@ -9,10 +9,19 @@ var extReplace = require('gulp-ext-replace');
 var autoPrefixer = require('gulp-autoprefixer');
 var watch = require('gulp-watch');
 var concat = require('gulp-concat');
+var paths = {
+    styles: 'app/styles/**/*.less',
+    vendor: [
+        'bower_components/angular/angular.min.js',
+        'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+        'bower_components/oclazyload/dist/ocLazyLoad.min.js'
+    ],
+    app: ['app/app.module.js', 'app/app.config.js', 'app/core/core.module.js', 'app/core/directives/**/*.js']
+};
 
 gulp.task('less', function () {
    return gulp
-       .src('app/styles/**/*.less')
+       .src(paths.styles)
        .pipe(sourcemaps.init())
        .pipe(less())
        .pipe(autoPrefixer())
@@ -24,11 +33,7 @@ gulp.task('less', function () {
 
 gulp.task('vendor', function () {
     return gulp
-        .src([
-            'bower_components/angular/angular.min.js',
-            'bower_components/angular-ui-router/release/angular-ui-router.min.js',
-            'bower_components/oclazyload/dist/ocLazyLoad.min.js'
-        ])
+        .src(paths.vendor)
         .pipe(sourcemaps.init())
         .pipe(concat('vendor.min.js'))
         .pipe(sourcemaps.write('./maps'))
@@ -37,9 +42,15 @@ gulp.task('vendor', function () {
 
 gulp.task('app', function () {
    return gulp
-       .src(['app/app.module.js', 'app/app.config.js'])
+       .src(paths.app)
        .pipe(concat('app.all.js'))
        .pipe(gulp.dest('app'));
 });
 
-gulp.task('default', ['less', 'vendor', 'app']);
+// Rerun the task when a file changes
+gulp.task('watch', function() {
+    gulp.watch(paths.app, ['app']);
+    gulp.watch(paths.styles, ['less']);
+});
+
+gulp.task('default', ['watch', 'less', 'vendor', 'app']);
