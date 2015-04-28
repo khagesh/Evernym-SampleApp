@@ -2,33 +2,44 @@
  * Created by Khagesh.Sharma on 4/26/2015.
  */
 ///<reference path="../../types/tsd.d.ts" />
+///<reference path="home.interfaces.ts" />
 (function () {
-    'use strict';
     angular.module('app.home').controller('HomeController', HomeController);
-    function HomeController($http) {
+    function HomeController(pivotalService) {
         var _this = this;
-        var vm = this;
         this.speech = '';
-        this.onSpeechDone = function (finalSpeech) {
-            _this.speech = finalSpeech;
+        this.stories = null;
+        this.createStory = function () {
+            createNewStory().then(function () {
+                //once new user story is created, get all stories
+                getStories();
+            }).then(null, function () {
+                // handle error over here
+            });
         };
-        // get all stories assigned
-        $http.get('https://www.pivotaltracker.com/services/v5/projects/1333036/stories', { headers: { 'X-TrackerToken': 'e94943960ab1854a06c23e8355ea5ff7' } }).success(function (data) {
-            console.log(data);
-        }).error(function (data) {
-            console.log(data);
-        });
-        //
-        //$http.post('https://www.pivotaltracker.com/services/v5/projects/1333036/stories',
-        //    {'name':'story created from voice controlled pivotal tracker'},
-        //    {headers: {'X-TrackerToken': 'e94943960ab1854a06c23e8355ea5ff7'}})
-        //    .success(function (data) {
-        //        console.log(data);
-        //    }).error(function (data) {
-        //       console.log(data);
-        //    });
-        return vm;
+        var activate = function () {
+            return getStories();
+        };
+        var getStories = function () {
+            // get all stories assigned
+            return pivotalService.getStories().then(function (stories) {
+                _this.stories = stories.data.map(function (story) {
+                    return {
+                        name: story.name,
+                        estimate: story.estimate,
+                        status: story.current_status
+                    };
+                });
+            }).then(null, function (error) {
+                //TODO: Handle error over here
+            });
+        };
+        var createNewStory = function () {
+            return pivotalService.createStory({ name: _this.speech });
+        };
+        activate();
+        return this;
     }
-    HomeController.$inject = ['$http'];
+    HomeController.$inject = ['pivotalService'];
 })();
 //# sourceMappingURL=home.controller.js.map

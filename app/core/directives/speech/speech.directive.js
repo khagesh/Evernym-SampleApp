@@ -59,6 +59,7 @@
                 _this.speechRecognition.start();
             };
             this.onSpeechStop = function () {
+                _this.speech = _this.finalSpeech;
                 _this.speechRecognition.stop();
             };
             this.speechRecognition.onerror = function (event) {

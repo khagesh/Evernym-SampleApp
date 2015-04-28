@@ -16,7 +16,14 @@ var paths = {
         'bower_components/angular-ui-router/release/angular-ui-router.min.js',
         'bower_components/oclazyload/dist/ocLazyLoad.min.js'
     ],
-    app: ['app/app.module.js', 'app/app.config.js', 'app/core/core.module.js', 'app/core/directives/**/*.js']
+    app: [
+        'app/app.module.js',
+        'app/app.config.js',
+        'app/core/core.module.js',
+        'app/core/directives/**/*.js',
+        'app/core/constants/**/*.js',
+        'app/core/services/**/*.js'
+    ]
 };
 
 gulp.task('less', function () {

@@ -70,6 +70,7 @@
             };
 
             this.onSpeechStop = () => {
+                this.speech = this.finalSpeech;
                 this.speechRecognition.stop();
             };
 
