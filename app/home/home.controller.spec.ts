@@ -9,19 +9,10 @@
 
         beforeEach(module('app.home'));
         beforeEach(module('app.core', function(_$provide_){
-            _$provide_.service('pivotalService', function ($q) {
-                this.getStories = function () {
-                    // fake implementation
-                    var defer = $q.defer();
+            _$provide_.service('pivotalService', function () {
+                this.getStories = function () {};
 
-                    defer.resolve([]);
-
-                    return defer.promise();
-                };
-
-                //this.createStory = jasmine.createSpy('createStory').andCallFake(function(){
-                //    return true;
-                //});
+                this.createStory = function(){};
             });
         }));
 
@@ -29,17 +20,24 @@
             $controller = _$controller_;
         }));
 
-        beforeEach(inject(function (_pivotalService_) {
+        beforeEach(inject(function (_pivotalService_, $q, _$rootScope_) {
             pivotalServiceMock = _pivotalService_;
+            var deferred = $q.defer();
+            spyOn(pivotalServiceMock, "getStories").and.callFake(function () {
+                return deferred.promise;
+            });
+
+            deferred.resolve([{name:'some name'}]);
+            _$rootScope_.$digest();
         }));
 
         describe('$scope.stories', function () {
-            it('should have stories value set to null', function () {
+            it('should call activate', function () {
                 var controller = $controller('HomeController', {
                     pivotalService: pivotalServiceMock
                 });
 
-                expect(controller.stories).toBe([]);
+                expect(pivotalServiceMock.getStories).toHaveBeenCalled();
             });
         });
     });

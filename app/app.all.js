@@ -228,8 +228,8 @@
         var getStories = function () {
             return get(PIVOTAL.API.STORIES);
         };
-        var createStory = function () {
-            return post(PIVOTAL.API.STORIES);
+        var createStory = function (data) {
+            return post(PIVOTAL.API.STORIES, data);
         };
         return {
             getStories: getStories,

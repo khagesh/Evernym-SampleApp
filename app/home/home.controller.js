@@ -8,7 +8,7 @@
     function HomeController(pivotalService) {
         var _this = this;
         this.speech = '';
-        this.stories = null;
+        this.stories = [];
         this.createStory = function () {
             createNewStory().then(function () {
                 //once new user story is created, get all stories
@@ -23,13 +23,15 @@
         var getStories = function () {
             // get all stories assigned
             return pivotalService.getStories().then(function (stories) {
-                _this.stories = stories.data.map(function (story) {
-                    return {
-                        name: story.name,
-                        estimate: story.estimate,
-                        status: story.current_status
-                    };
-                });
+                if (stories && stories.data) {
+                    _this.stories = stories.data.map(function (story) {
+                        return {
+                            name: story.name,
+                            estimate: story.estimate,
+                            status: story.current_status
+                        };
+                    });
+                }
             }).then(null, function (error) {
                 //TODO: Handle error over here
             });

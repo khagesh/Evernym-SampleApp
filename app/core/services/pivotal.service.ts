@@ -26,8 +26,8 @@
             return get(PIVOTAL.API.STORIES);
         };
 
-        var createStory = () => {
-            return post(PIVOTAL.API.STORIES);
+        var createStory = (data: any) => {
+            return post(PIVOTAL.API.STORIES, data);
         };
 
         return {

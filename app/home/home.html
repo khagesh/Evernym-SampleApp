@@ -9,7 +9,7 @@
                     <div class="form-group">
                         <label for="storyName">Story name</label>
                         <textarea class="form-controls input-lg" id="storyName" rows="4" ng-model="home.speech"></textarea>
-                        <button type="button" class="btn btn-success">Create new story</button>
+                        <button type="button" class="btn btn-success" ng-click="home.createStory()">Create new story</button>
                     </div>
                 </form>
                 <pre>{{home.stories | json}}</pre>

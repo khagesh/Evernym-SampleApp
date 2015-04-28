@@ -11,7 +11,7 @@
     function HomeController (pivotalService) {
 
         this.speech = '';
-        this.stories = null;
+        this.stories = [];
         this.createStory = () => {
             createNewStory()
                 .then(() => {
@@ -32,14 +32,16 @@
             return pivotalService
                 .getStories()
                 .then((stories) => {
-                    this.stories = stories.data
-                        .map((story) => {
-                            return {
-                                name: story.name,
-                                estimate: story.estimate,
-                                status: story.current_status
-                            }
-                        });
+                    if(stories && stories.data){
+                        this.stories = stories.data
+                            .map((story) => {
+                                return {
+                                    name: story.name,
+                                    estimate: story.estimate,
+                                    status: story.current_status
+                                }
+                            });
+                    }
                 })
                 .then(null, (error) => {
                     //TODO: Handle error over here
